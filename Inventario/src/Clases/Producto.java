@@ -5,10 +5,12 @@ public class Producto {
     private String nombre;
     private double precio;
     private int stock;
+    private String categoria;
 
-    public Producto(String nombre, double precio, int stock){
+    public Producto(String nombre, double precio, String categoria, int stock){
         this.nombre = nombre;
         this.precio = precio;
+        this.categoria = categoria;
         this.stock = stock;
     }
 

@@ -6,6 +6,7 @@ public class menuproductos {
 
     private Producto[] productos;
     private Producto p = new Producto();
+    String[] categorias = {"Abarrotes","Aseo Personal","Bebidas","Lácteos","Mascotas"};
 
     public menuproductos(Producto[] productos) {
         this.productos = productos;
@@ -31,6 +32,7 @@ public class menuproductos {
             }
 
             switch (opcionProd) {
+                //Agregar producto
                 case 'a':
                     System.out.print("Nombre: ");
                     String nuevoNombre = s.nextLine();
@@ -50,6 +52,36 @@ public class menuproductos {
                         s.nextLine();
                         break;
                     }
+                    System.out.println("--- Elige una categoria ---");
+                    System.out.println("1. Abarrotes ");
+                    System.out.println("2. Aseo Personal ");
+                    System.out.println("3. Bebidas ");
+                    System.out.println("4. Lácteos ");
+                    System.out.println("5. Mascotas ");
+                    int opCat = s.nextInt();
+                    String categoria = " ";
+                    switch (opCat) {
+                        case 1:
+                            categoria = categorias[0];
+                            break;
+                        case 2:
+                            categoria = categorias[1];
+                            break;
+                        case 3:
+                            categoria = categorias[2];
+                            break;
+                        case 4:
+                            categoria = categorias[3];
+                            break;
+                        case 5:
+                            categoria = categorias[4];
+                            break;
+                    
+                        default:
+                            categoria = "Sin Categoria";
+                            break;
+                    }
+                    
 
                     System.out.print("Stock: ");
                     int nuevoStock = s.nextInt();
@@ -58,7 +90,7 @@ public class menuproductos {
                     boolean registrado = false;
                     for (int i = 0; i < productos.length; i++) {
                         if (productos[i] == null) {
-                            productos[i] = new Producto(nuevoNombre, nuevoPrecio, nuevoStock);
+                            productos[i] = new Producto(nuevoNombre, nuevoPrecio, categoria, nuevoStock);
                             registrado = true;
                             System.out.println("Producto registrado con éxito.");
                             break;
@@ -69,6 +101,7 @@ public class menuproductos {
                     }
                     break;
 
+                //Ver Inventario
                 case 'b':
                     p.getInventario(productos);
                     System.out.println("\n--- Inventario Ordenado ---");
@@ -79,6 +112,7 @@ public class menuproductos {
                     }
                     break;
 
+                //Ver productos a reabastecer
                 case 'c':
                     System.out.println("\n--- Productos a reabastecer (Stock < 3) ---");
                     boolean necesitaReabastecer = false;
@@ -93,6 +127,7 @@ public class menuproductos {
                     }
                     break;
 
+                //Buscar producto por precio
                 case 'd':
                     System.out.print("Introduce el precio a buscar: ");
                     double precioBuscar = s.nextDouble();
@@ -109,10 +144,12 @@ public class menuproductos {
                     }
                     break;
 
+                //Regresar al menú principal
                 case 'e':
                     System.out.println("Regresando al menú principal...");
                     break;
 
+                //Reabastecer producto
                 case 'f':
                     System.out.print("Nombre del producto a reabastecer: ");
                     String nombreReabastecer = s.nextLine();
