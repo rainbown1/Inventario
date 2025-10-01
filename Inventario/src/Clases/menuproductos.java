@@ -6,7 +6,7 @@ public class menuproductos {
 
     private Producto[] productos;
     private Producto p = new Producto();
-    String[] categorias = {"Abarrotes","Aseo Personal","Bebidas","Lácteos","Mascotas"};
+    String[] categorias = {"Abarrotes","Aseo Personal","Bebidas","Lacteos","Mascotas"};
 
     public menuproductos(Producto[] productos) {
         this.productos = productos;
@@ -15,14 +15,14 @@ public class menuproductos {
     public void mostrarMenu(Scanner s) {
         char opcionProd;
         do {
-            System.out.println("\n--- Menú de Productos ---");
+            System.out.println("\n--- Menu de Productos ---");
             System.out.println("a. Registrar producto");
             System.out.println("b. Ver inventario (ordenado por precio)");
             System.out.println("c. Ver productos a reabastecer"); 
             System.out.println("d. Buscar producto por precio");
-            System.out.println("e. Regresar al menú principal");
+            System.out.println("e. Regresar al menu principal");
             System.out.println("f. Reabastecer producto"); 
-            System.out.print("Elige una opción: ");
+            System.out.print("Elige una opcion: ");
 
             String input = s.nextLine(); 
             if (input.isEmpty()) {
@@ -32,13 +32,12 @@ public class menuproductos {
             }
 
             switch (opcionProd) {
-                //Agregar producto
                 case 'a':
                     System.out.print("Nombre: ");
                     String nuevoNombre = s.nextLine();
                     
                     if (p.obtenerProducto(productos, nuevoNombre) != null) {
-                        System.out.println("Error: El producto ya existe. Usa la opción 'f' para reabastecer.");
+                        System.out.println("Error: El producto ya existe. Usa la opcion 'f' para reabastecer.");
                         break;
                     }
                     
@@ -48,7 +47,7 @@ public class menuproductos {
                         nuevoPrecio = s.nextDouble();
                         s.nextLine();
                     } catch (java.util.InputMismatchException e) {
-                        System.out.println("Error: Ingresa un precio válido (número).");
+                        System.out.println("Error: Ingresa un precio valido (numero).");
                         s.nextLine();
                         break;
                     }
@@ -56,7 +55,7 @@ public class menuproductos {
                     System.out.println("1. Abarrotes ");
                     System.out.println("2. Aseo Personal ");
                     System.out.println("3. Bebidas ");
-                    System.out.println("4. Lácteos ");
+                    System.out.println("4. Lacteos ");
                     System.out.println("5. Mascotas ");
                     int opCat = s.nextInt();
                     String categoria = " ";
@@ -92,16 +91,15 @@ public class menuproductos {
                         if (productos[i] == null) {
                             productos[i] = new Producto(nuevoNombre, nuevoPrecio, categoria, nuevoStock);
                             registrado = true;
-                            System.out.println("Producto registrado con éxito.");
+                            System.out.println("Producto registrado con exito.");
                             break;
                         }
                     }
                     if (!registrado) {
-                        System.out.println("No hay espacio para registrar más productos.");
+                        System.out.println("No hay espacio para registrar mas productos.");
                     }
                     break;
 
-                //Ver Inventario
                 case 'b':
                     p.getInventario(productos);
                     System.out.println("\n--- Inventario Ordenado ---");
@@ -112,7 +110,6 @@ public class menuproductos {
                     }
                     break;
 
-                //Ver productos a reabastecer
                 case 'c':
                     System.out.println("\n--- Productos a reabastecer (Stock < 3) ---");
                     boolean necesitaReabastecer = false;
@@ -123,11 +120,10 @@ public class menuproductos {
                         }
                     }
                     if (!necesitaReabastecer) {
-                        System.out.println("Todo el inventario está en buen nivel de stock.");
+                        System.out.println("Todo el inventario esta en buen nivel de stock.");
                     }
                     break;
 
-                //Buscar producto por precio
                 case 'd':
                     System.out.print("Introduce el precio a buscar: ");
                     double precioBuscar = s.nextDouble();
@@ -140,16 +136,14 @@ public class menuproductos {
                         }
                     }
                     if (!encontrado) {
-                        System.out.println("No se encontró ningún producto con ese precio.");
+                        System.out.println("No se encontro ningun producto con ese precio.");
                     }
                     break;
 
-                //Regresar al menú principal
                 case 'e':
-                    System.out.println("Regresando al menú principal...");
+                    System.out.println("Regresando al menu principal...");
                     break;
 
-                //Reabastecer producto
                 case 'f':
                     System.out.print("Nombre del producto a reabastecer: ");
                     String nombreReabastecer = s.nextLine();
@@ -164,16 +158,16 @@ public class menuproductos {
                     int cantidadAumentar = 0;
                     boolean cantidadValida = false;
                     while (!cantidadValida) {
-                        System.out.print("Cantidad de unidades a añadir (stock actual: " + productoReabastecer.getStock() + "): ");
+                        System.out.print("Cantidad de unidades a anadir (stock actual: " + productoReabastecer.getStock() + "): ");
                         try {
                             cantidadAumentar = Integer.parseInt(s.nextLine());
                             if (cantidadAumentar <= 0) {
-                                System.out.println("Error: La cantidad a añadir debe ser mayor a cero.");
+                                System.out.println("Error: La cantidad a anadir debe ser mayor a cero.");
                             } else {
                                 cantidadValida = true;
                             }
                         } catch (NumberFormatException e) {
-                            System.out.println("Error: Ingresa solo un número entero para la cantidad.");
+                            System.out.println("Error: Ingresa solo un numero entero para la cantidad.");
                         }
                     }
                     
@@ -183,7 +177,7 @@ public class menuproductos {
                     break;
 
                 default:
-                    System.out.println("Opción inválida.");
+                    System.out.println("Opcion invalida.");
             }
 
         } while (opcionProd != 'e');

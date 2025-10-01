@@ -65,9 +65,10 @@ public class Producto {
     public void setPrecio(double precio) { this.precio = precio; }
     public int getStock() { return stock; }
     public void setStock(int stock) { this.stock = stock; }
+    public String getCategoria() { return categoria; } 
 
     @Override
     public String toString() {
-        return String.format("Nombre: %s  Precio: $%.2f  Stock: %d", nombre, precio, stock);
+        return String.format("Nombre: %s  Precio: $%.2f  Stock: %d  Categoria: %s", nombre, precio, stock, categoria);
     }
 }
