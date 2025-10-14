@@ -5,7 +5,7 @@ public class Lista {
     public Lista(Nodo cabeza) {
         this.cabeza = cabeza;
     }
-    
+
     // Constructor adicional para lista vacía
     public Lista() {
         this.cabeza = null;
@@ -17,7 +17,7 @@ public class Lista {
         }
         return false;
     }
-    
+
     public void agregar(int elemento) { // Faltaba el parámetro
         Nodo nuevoNodo = new Nodo(elemento); // Asumimos que Nodo tiene constructor con parámetro
         nuevoNodo.setSiguiente(cabeza);

@@ -1,9 +1,17 @@
 public class Nodo {
+    int num;
+    Nodo siguiente;
 
-    public Nodo(){
-
+    public Nodo(int num) {
+        this.num = num;
+        this.siguiente = null;
     }
-    public void setSiguiente(Nodo nodo){
 
+    public Nodo getSiguiente() {
+        return siguiente;
+    }
+
+    public void setSiguiente(Nodo siguiente) {
+        this.siguiente = siguiente;
     }
 }
