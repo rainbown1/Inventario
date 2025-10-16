@@ -14,10 +14,12 @@ public class Nodo {
     public void setSiguiente(Nodo siguiente) {
         this.siguiente = siguiente;
     }
-    public Auto getAuto(){
+
+    public Auto getAuto() {
         return auto;
     }
-    public void setAuto(Auto auto){
+
+    public void setAuto(Auto auto) {
         this.auto = auto;
     }
 }
