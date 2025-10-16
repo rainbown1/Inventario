@@ -1,9 +1,9 @@
 public class Nodo {
-    int num;
+    Auto auto;
     Nodo siguiente;
 
-    public Nodo(int num) {
-        this.num = num;
+    public Nodo(Auto auto) {
+        this.auto = auto;
         this.siguiente = null;
     }
 
@@ -13,5 +13,11 @@ public class Nodo {
 
     public void setSiguiente(Nodo siguiente) {
         this.siguiente = siguiente;
+    }
+    public Auto getAuto(){
+        return auto;
+    }
+    public void setAuto(Auto auto){
+        this.auto = auto;
     }
 }

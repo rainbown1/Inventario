@@ -18,19 +18,23 @@ public class Lista {
         return false;
     }
 
-    public void agregar(int elemento) { // Faltaba el parámetro
+    public void agregar(Auto elemento) { // Faltaba el parámetro
         Nodo nuevoNodo = new Nodo(elemento); // Asumimos que Nodo tiene constructor con parámetro
         nuevoNodo.setSiguiente(cabeza);
         cabeza = nuevoNodo;
     }
 
-    public boolean buscar(int elemento) {
+    //MEtodos de clase auto getPropietario y setEstado
+     public boolean buscarPorMatricula(String propietario) {
         Nodo temp = cabeza;
         while (temp != null) {
-            if (temp.num == elemento) {
+            Auto autoActual = temp.getAuto();
+            if (autoActual.getPropietario().equals(propietario)) {
+                // Cambiar estado a "Reparado"
+                autoActual.setEstado("Reparado");
                 return true;
             }
-            temp = temp.getSiguiente(); // Faltaba avanzar al siguiente nodo
+            temp = temp.getSiguiente();
         }
         return false;
     }
@@ -42,8 +46,8 @@ public class Lista {
         }
         Nodo n = cabeza;
         while (n != null) {
-            System.out.print(n.num + " --> "); // Cambiado a print para mejor formato
-            n = n.getSiguiente(); // Faltaba avanzar al siguiente nodo
+            System.out.print(n.auto + " --> ");
+            n = n.getSiguiente(); // avanzar al siguiente nodo
         }
         System.out.println("null"); // Para indicar el final de la lista
     }
